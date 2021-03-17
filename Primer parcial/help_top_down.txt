@@ -1,0 +1,12 @@
+--------------------------------TOP DOWN-------------------------------
+Calcula atributos basados en lienas de código
+
+Atributos disponibles para calcular:
+  System size: Cuanto trabajo se requiere realizar
+  Productivity rate: La tasa de trabajo en la que se realiza la actividad
+  Productivity rate: Tamanio del sistema en lineas de código (LOC)
+
+Funciones disponibles:
+  effort(system_size, productivity_rate
+  productivity_rate(effort, system_size
+  system_size(effort, productivity_rate

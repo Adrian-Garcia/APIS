@@ -1,8 +1,11 @@
+-------------------------------PARCIAL 1-------------------------------
+
 Clases disponibles:
   TopDown
   Analogia
   PuntosDeFuncion
 
-Uso de funciones:
+Ejemplos de funciones:
   Analogia.help         Explica como usar clase Analogia
   TopDown.effort(1, 2)  Regresa esfuerzo con 1 loc y 2 como productivity_rate
+  

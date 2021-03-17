@@ -1,0 +1,9 @@
+--------------------------------ANALOGY--------------------------------
+Sirve para conseguir distancia entre dos puntos y así poder estimar
+con base en datos de proyectos anteriores
+
+Atributos disponibles para calcular:
+  Distance: dados dos puntos, calcula su distancia
+
+Funciones disponibles:
+  distance(target_param1, source_param1, target_param2, source_param2)

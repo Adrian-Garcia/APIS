@@ -1,0 +1,13 @@
+---------------------------PUNTOS DE FUNCION---------------------------
+Metricas de estimacion para aplicarlas en contexto de analisis y especificación
+
+Atributos disponibles para calcular:
+  function_points: Analisys completo de puntos de funcion
+  productivity_rate: Tasa de productuvudad en el proyecto
+  function_points_analysis: Valor indicidual de puntos de funcion
+
+Funciones disponibles:
+  function_points_analysis(conteo, factor, f1=value, days=value, fp=value)
+  productivity_rate(days, fp, function_points)
+  function_points()
+  function_points(conteo_total=val, conteo=[], f1=val, factor=val)
