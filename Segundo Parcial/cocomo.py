@@ -24,11 +24,11 @@ class Cocomo():
 	def resolve(tamanio, tipo, FAEs_seleccionadas):
 		global tipo_de_sistema
 
-		sistema_seleccionado = tipo_de_sistema[tipo]
+		tipo_seleccionado = tipo_de_sistema[tipo]
 		FAE_final = reduce((lambda x, y: x * y), FAEs_seleccionadas.values())
 
-		esfuerzo = sistema_seleccionado['aBasico'] * pow(tamanio, sistema_seleccionado['b']) * FAE_final
-		tiempo = sistema_seleccionado['C'] * esfuerzo ** sistema_seleccionado['d']
+		esfuerzo = tipo_seleccionado['aBasico'] * pow(tamanio, tipo_seleccionado['b']) * FAE_final
+		tiempo = tipo_seleccionado['C'] * esfuerzo ** tipo_seleccionado['d']
 		personal_requerido = esfuerzo / tiempo
 
 		print('FAE final: {}'.format(FAE_final))
