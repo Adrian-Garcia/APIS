@@ -20,21 +20,24 @@ semiacoplado = { 'aBasico': 3.0, 'aIntermedio': 3.0, 'b': 1.12, 'C': 2.5, 'd': 0
 empotrado = { 'aBasico': 3.6, 'aIntermedio': 2.8, 'b': 1.2, 'C': 2.05, 'd': 0.32 }
 tipo_de_sistema = { 'organico': organico, 'semiacoplado': semiacoplado, 'empotrado': empotrado }
 
-tamanio = 70 # Puntos de funcion
-unidad_punto_de_funcion = 1000 # LOC
-salario_promedio_por_recurso = 4000 # Precio en USD
+class Cocomo():
+	def resolve(tamanio, tipo, FAEs_seleccionadas):
+		global tipo_de_sistema
 
+		sistema_seleccionado = tipo_de_sistema[tipo]
+		FAE_final = reduce((lambda x, y: x * y), FAEs_seleccionadas.values())
+
+		esfuerzo = sistema_seleccionado['aBasico'] * pow(tamanio, sistema_seleccionado['b']) * FAE_final
+		tiempo = sistema_seleccionado['C'] * esfuerzo ** sistema_seleccionado['d']
+		personal_requerido = esfuerzo / tiempo
+
+		print('FAE final: {}'.format(FAE_final))
+		print('Esfuerzo: {} pers-mes'.format(esfuerzo))
+		print('Tiempo: {} meses'.format(tiempo))
+		print('Personal requerido: {} personas'.format(personal_requerido))
+
+tamanio = 70 # kloc
 tipo = 'semiacoplado'
-sistema_seleccionado = tipo_de_sistema[tipo]
-
 FAEs_seleccionadas = { 'RELY': 1.4, 'CPLX': 1.65, 'AEXP': 1.13, 'PACAP': 0.7, 'LEXP': 0.95 }
-FAE_final = reduce((lambda x, y: x * y), FAEs_seleccionadas.values())
 
-esfuerzo = sistema_seleccionado['aBasico'] * pow(tamanio, sistema_seleccionado['b']) * FAE_final
-tiempo = sistema_seleccionado['aBasico'] 
-personal_requerido = None
-
-print('FAE final: {}'.format(FAE_final))
-print('Esfuerzo: {} pers-mes'.format(esfuerzo))
-print('Tiempo: {} meses'.format(tiempo))
-print('Personal requerido: {} personas'.format(personas))
+Cocomo.resolve(tamanio, tipo, FAEs_seleccionadas)
