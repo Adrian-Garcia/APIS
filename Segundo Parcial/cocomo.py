@@ -1,7 +1,16 @@
 '''
 COCOMO RESOLVER
 
-Un proveedor de software tiene que producir una aplicación que controle una máquina en una fábrica. Se requiere un alto grado de confiabilidad, pues una falla podría dañar a los operadores. Los algoritmos para controlar la maquinaria también son complejos. La confiabilidad y complejidad del producto son muy altas. A la compañía le interesa tomar la oportunidad de aprovechar completamente la inversión que han hecho en el proyecto, reutilizando el sistema de control con algunas modificaciones en futuros contratos. El requerimiento de reutilización es muy alto. Los desarrolladores están familiarizados con la plataforma, así que la posibilidad de problemas potenciales es muy baja. El equipo actual es muy capaz, pero el proyecto es nuevo de alguna manera para todos, por lo que no son tan experimentados. Las herramientas disponibles para los desarrolladores son las típicas para el tamaño de la compañía, y la presión por cumplir con el calendario para llegar a la deadline es lo normal.
+Un proveedor de software tiene que producir una aplicación que controle una máquina en una fábrica.
+Se requiere un alto grado de confiabilidad, pues una falla podría dañar a los operadores. Los algoritmos
+para controlar la maquinaria también son complejos. La confiabilidad y complejidad del producto son muy
+altas. A la compañía le interesa tomar la oportunidad de aprovechar completamente la inversión que han
+hecho en el proyecto, reutilizando el sistema de control con algunas modificaciones en futuros contratos.
+El requerimiento de reutilización es muy alto. Los desarrolladores están familiarizados con la
+plataforma, así que la posibilidad de problemas potenciales es muy baja. El equipo actual es muy capaz,
+pero el proyecto es nuevo de alguna manera para todos, por lo que no son tan experimentados.
+Las herramientas disponibles para los desarrolladores son las típicas para el tamaño de la compañía, y
+la presión por cumplir con el calendario para llegar a la deadline es lo normal.
 
 
 Se estima que el tamaño de la aplicación es de 70 puntos de función (FP). 
@@ -36,8 +45,13 @@ class Cocomo():
 		print('Tiempo: {} meses'.format(tiempo))
 		print('Personal requerido: {} personas'.format(personal_requerido))
 
+class CocomoII():
+	def resolve():
+		print("No me salio, profe me perd0na")
+
 tamanio = 70 # kloc
 tipo = 'semiacoplado'
 FAEs_seleccionadas = { 'RELY': 1.4, 'CPLX': 1.65, 'AEXP': 1.13, 'PACAP': 0.7, 'LEXP': 0.95 }
 
 Cocomo.resolve(tamanio, tipo, FAEs_seleccionadas)
+
