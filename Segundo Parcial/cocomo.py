@@ -12,38 +12,46 @@ pero el proyecto es nuevo de alguna manera para todos, por lo que no son tan exp
 Las herramientas disponibles para los desarrolladores son las típicas para el tamaño de la compañía, y
 la presión por cumplir con el calendario para llegar a la deadline es lo normal.
 
-
 Se estima que el tamaño de la aplicación es de 70 puntos de función (FP). 
-
 Considerando por analogía que 1 FP = 1,000 LOC, calcular lo siguiente:
 
 1. Estimar el esfuerzo, tiempo y personal requerido.
 2. Indica qué factores (FAE) utilizaste, y el valor de cada factor.
 '''
 
+from cocomo_constants import *
 from functools import reduce
 import math
 
-organico = { 'aBasico': 2.4, 'aIntermedio': 3.2, 'b': 1.05, 'C': 2.5, 'd': 0.38 }
-semiacoplado = { 'aBasico': 3.0, 'aIntermedio': 3.0, 'b': 1.12, 'C': 2.5, 'd': 0.35 }
-empotrado = { 'aBasico': 3.6, 'aIntermedio': 2.8, 'b': 1.2, 'C': 2.05, 'd': 0.32 }
-tipo_de_sistema = { 'organico': organico, 'semiacoplado': semiacoplado, 'empotrado': empotrado }
-
 class Cocomo():
-	def resolve(tamanio, tipo, FAEs_seleccionadas):
-		global tipo_de_sistema
+	def __final_FAE(FAEs_seleccionadas):
+		FAE_type = type(FAEs_seleccionadas)
 
+		if FAE_type == dict:
+			return reduce((lambda x, y: x * y), FAEs_seleccionadas.values())
+
+		elif FAE_type == list:
+			return reduce((lambda x, y: x * y), FAEs_seleccionadas)
+
+		else:
+			return FAEs_seleccionadas
+
+	def resolve(tamanio, tipo, FAEs_seleccionadas):
+		global tipo_de_sistema, salario_promedio_por_recurso
 		tipo_seleccionado = tipo_de_sistema[tipo]
-		FAE_final = reduce((lambda x, y: x * y), FAEs_seleccionadas.values())
+
+		FAE_final = Cocomo.__final_FAE(FAEs_seleccionadas)
 
 		esfuerzo = tipo_seleccionado['aBasico'] * pow(tamanio, tipo_seleccionado['b']) * FAE_final
 		tiempo = tipo_seleccionado['C'] * esfuerzo ** tipo_seleccionado['d']
 		personal_requerido = esfuerzo / tiempo
+		costo_del_proyecto = salario_promedio_por_recurso * esfuerzo
 
 		print('FAE final: {}'.format(FAE_final))
 		print('Esfuerzo: {} pers-mes'.format(esfuerzo))
 		print('Tiempo: {} meses'.format(tiempo))
 		print('Personal requerido: {} personas'.format(personal_requerido))
+		print('Costo del proyecto: USD$ {}'.format(costo_del_proyecto))
 
 class CocomoII():
 	def resolve():
@@ -54,4 +62,3 @@ tipo = 'semiacoplado'
 FAEs_seleccionadas = { 'RELY': 1.4, 'CPLX': 1.65, 'AEXP': 1.13, 'PACAP': 0.7, 'LEXP': 0.95 }
 
 Cocomo.resolve(tamanio, tipo, FAEs_seleccionadas)
-
